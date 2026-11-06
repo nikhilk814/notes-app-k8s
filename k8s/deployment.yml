@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: note-deployment
+  labels: 
+    app: note-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: note-app
+  template:
+    metadata:
+      labels:
+        app: note-app
+    spec:
+      containers:
+      - name: note-app
+        image: nikhilk814/note-app:v1 
+        ports:
+        - containerPort: 8000
